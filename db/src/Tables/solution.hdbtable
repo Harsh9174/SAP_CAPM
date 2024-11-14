@@ -1,0 +1,4 @@
+COLUMN TABLE SOLUTION(
+
+    id int primary key,
+    Solution_name NVARCHAR(1000))

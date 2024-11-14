@@ -1,0 +1,22 @@
+{
+  "PRACTICE_EMP": {
+    "target": {
+      "object": "EMP"
+    }
+  },
+  "PRACTICE_SOLUTION": {
+    "target": {
+      "object": "SOLUTION"
+    }
+  },
+  "PRACTICE_REPLACEMENT_INFO": {
+    "target": {
+      "object": "REPLACEMENT_INFO"
+    }
+  },
+  "REPLACEMENT_INFO_VIEW": {
+    "target": {
+      "object": "Replacement_info_view"
+    }
+  }
+}

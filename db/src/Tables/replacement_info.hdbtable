@@ -1,0 +1,15 @@
+COLUMN TABLE REPLACEMENT_INFO(
+    Retailer_id int NOT NULL primary key GENERATED ALWAYS AS IDENTITY,
+    Recieved_date date,
+    Shop_name NVARCHAR(100),
+    Shop_address NVARCHAR(300),
+    phone_number NVARCHAR(10) not null,
+    Product_name NVARCHAR(1000),
+    Brand NVARCHAR(1000),
+    Problem NVARCHAR(1000) not null,
+    Recieved_by int,
+    Solution_id int,
+    Checked_by  int,
+    Send_by  int,
+    Send_date datetime,
+    image NVARCHAR(5000))

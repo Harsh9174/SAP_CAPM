@@ -1,0 +1,19 @@
+{
+    "role": {
+      "name": "Test-proj::access#",
+      "schema_privileges": [
+        {
+          "privileges_with_grant_option": [
+            "SELECT",
+            "SELECT METADATA",
+            "INSERT",
+            "DELETE",
+            "EXECUTE",
+            "ALTER",
+            "UPDATE",
+            "CREATE ANY"
+          ]
+        }
+      ]
+    }
+  }

@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="Replacement_info_view" applyPrivilegeType="NONE" dataCategory="DIMENSION" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="Replacement_info_view.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="REPLACEMENT_INFO">
+    <resourceUri>REPLACEMENT_INFO</resourceUri>
+  </DataSource>
+  <DataSource id="EMP">
+    <resourceUri>EMP</resourceUri>
+  </DataSource>
+  <DataSource id="SOLUTION">
+    <resourceUri>SOLUTION</resourceUri>
+  </DataSource>
+  <DataSource id="Projection_4$$$$EMP$$">
+    <resourceUri>EMP</resourceUri>
+  </DataSource>
+  <DataSource id="Projection_5$$$$EMP$$">
+    <resourceUri>EMP</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="RETAILER_ID"/>
+      <viewAttribute id="RECIEVED_DATE"/>
+      <viewAttribute id="SHOP_NAME"/>
+      <viewAttribute id="SHOP_ADDRESS"/>
+      <viewAttribute id="PHONE_NUMBER"/>
+      <viewAttribute id="PRODUCT_NAME"/>
+      <viewAttribute id="BRAND"/>
+      <viewAttribute id="PROBLEM"/>
+      <viewAttribute id="RECIEVED_BY"/>
+      <viewAttribute id="SOLUTION_ID"/>
+      <viewAttribute id="CHECKED_BY"/>
+      <viewAttribute id="SEND_BY"/>
+      <viewAttribute id="SEND_DATE"/>
+      <viewAttribute id="IMAGE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="REPLACEMENT_INFO"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="EID"/>
+      <viewAttribute id="ENAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="EMP"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <viewAttributes>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="SOLUTION_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SOLUTION"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+    <viewAttributes>
+      <viewAttribute id="EID"/>
+      <viewAttribute id="ENAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_4$$$$EMP$$"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+    <viewAttributes>
+      <viewAttribute id="EID"/>
+      <viewAttribute id="ENAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_5$$$$EMP$$"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="RETAILER_ID"/>
+      <viewAttribute id="RECIEVED_DATE"/>
+      <viewAttribute id="SHOP_NAME"/>
+      <viewAttribute id="SHOP_ADDRESS"/>
+      <viewAttribute id="PHONE_NUMBER"/>
+      <viewAttribute id="PRODUCT_NAME"/>
+      <viewAttribute id="BRAND"/>
+      <viewAttribute id="PROBLEM"/>
+      <viewAttribute id="SOLUTION_ID"/>
+      <viewAttribute id="CHECKED_BY"/>
+      <viewAttribute id="SEND_BY"/>
+      <viewAttribute id="SEND_DATE"/>
+      <viewAttribute id="IMAGE"/>
+      <viewAttribute id="RECIEVED_BY"/>
+      <viewAttribute hidden="true" id="JOIN$RECIEVED_BY$EID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RETAILER_ID" source="RETAILER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RECIEVED_DATE" source="RECIEVED_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHOP_NAME" source="SHOP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHOP_ADDRESS" source="SHOP_ADDRESS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PHONE_NUMBER" source="PHONE_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAME" source="PRODUCT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND" source="BRAND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROBLEM" source="PROBLEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOLUTION_ID" source="SOLUTION_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHECKED_BY" source="CHECKED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEND_BY" source="SEND_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEND_DATE" source="SEND_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IMAGE" source="IMAGE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$RECIEVED_BY$EID" source="RECIEVED_BY"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RECIEVED_BY" source="ENAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$RECIEVED_BY$EID" source="EID"/>
+    </input>
+    <joinAttribute name="JOIN$RECIEVED_BY$EID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="RETAILER_ID"/>
+      <viewAttribute id="RECIEVED_DATE"/>
+      <viewAttribute id="SHOP_NAME"/>
+      <viewAttribute id="SHOP_ADDRESS"/>
+      <viewAttribute id="PHONE_NUMBER"/>
+      <viewAttribute id="PRODUCT_NAME"/>
+      <viewAttribute id="BRAND"/>
+      <viewAttribute id="PROBLEM"/>
+      <viewAttribute id="SOLUTION_ID"/>
+      <viewAttribute id="SEND_BY"/>
+      <viewAttribute id="SEND_DATE"/>
+      <viewAttribute id="IMAGE"/>
+      <viewAttribute id="RECIEVED_BY"/>
+      <viewAttribute id="CHECKRD_BY"/>
+      <viewAttribute hidden="true" id="JOIN$CHECKED_BY$EID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RETAILER_ID" source="RETAILER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RECIEVED_DATE" source="RECIEVED_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHOP_NAME" source="SHOP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHOP_ADDRESS" source="SHOP_ADDRESS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PHONE_NUMBER" source="PHONE_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAME" source="PRODUCT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND" source="BRAND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROBLEM" source="PROBLEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOLUTION_ID" source="SOLUTION_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEND_BY" source="SEND_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEND_DATE" source="SEND_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IMAGE" source="IMAGE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RECIEVED_BY" source="RECIEVED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CHECKED_BY$EID" source="CHECKED_BY"/>
+    </input>
+    <input node="Projection_4">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHECKRD_BY" source="ENAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CHECKED_BY$EID" source="EID"/>
+    </input>
+    <joinAttribute name="JOIN$CHECKED_BY$EID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="RETAILER_ID"/>
+      <viewAttribute id="RECIEVED_DATE"/>
+      <viewAttribute id="SHOP_NAME"/>
+      <viewAttribute id="SHOP_ADDRESS"/>
+      <viewAttribute id="PHONE_NUMBER"/>
+      <viewAttribute id="PRODUCT_NAME"/>
+      <viewAttribute id="BRAND"/>
+      <viewAttribute id="PROBLEM"/>
+      <viewAttribute id="SOLUTION_ID"/>
+      <viewAttribute id="SEND_DATE"/>
+      <viewAttribute id="IMAGE"/>
+      <viewAttribute id="RECIEVED_BY"/>
+      <viewAttribute id="CHECKRD_BY"/>
+      <viewAttribute id="SEND_BY"/>
+      <viewAttribute hidden="true" id="JOIN$SEND_BY$EID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_3">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RETAILER_ID" source="RETAILER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RECIEVED_DATE" source="RECIEVED_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHOP_NAME" source="SHOP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHOP_ADDRESS" source="SHOP_ADDRESS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PHONE_NUMBER" source="PHONE_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAME" source="PRODUCT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND" source="BRAND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROBLEM" source="PROBLEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOLUTION_ID" source="SOLUTION_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEND_DATE" source="SEND_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IMAGE" source="IMAGE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RECIEVED_BY" source="RECIEVED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHECKRD_BY" source="CHECKRD_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SEND_BY$EID" source="SEND_BY"/>
+    </input>
+    <input node="Projection_5">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEND_BY" source="ENAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SEND_BY$EID" source="EID"/>
+    </input>
+    <joinAttribute name="JOIN$SEND_BY$EID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="RETAILER_ID"/>
+      <viewAttribute id="RECIEVED_DATE"/>
+      <viewAttribute id="SHOP_NAME"/>
+      <viewAttribute id="SHOP_ADDRESS"/>
+      <viewAttribute id="PHONE_NUMBER"/>
+      <viewAttribute id="PRODUCT_NAME"/>
+      <viewAttribute id="BRAND"/>
+      <viewAttribute id="PROBLEM"/>
+      <viewAttribute id="SEND_DATE"/>
+      <viewAttribute id="IMAGE"/>
+      <viewAttribute id="RECIEVED_BY"/>
+      <viewAttribute id="CHECKRD_BY"/>
+      <viewAttribute id="SEND_BY"/>
+      <viewAttribute id="SOLUTION_NAME"/>
+      <viewAttribute hidden="true" id="JOIN$SOLUTION_ID$ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_4">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RETAILER_ID" source="RETAILER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RECIEVED_DATE" source="RECIEVED_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHOP_NAME" source="SHOP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHOP_ADDRESS" source="SHOP_ADDRESS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PHONE_NUMBER" source="PHONE_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAME" source="PRODUCT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND" source="BRAND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROBLEM" source="PROBLEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEND_DATE" source="SEND_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IMAGE" source="IMAGE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RECIEVED_BY" source="RECIEVED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHECKRD_BY" source="CHECKRD_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEND_BY" source="SEND_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SOLUTION_ID$ID" source="SOLUTION_ID"/>
+    </input>
+    <input node="Projection_3">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SOLUTION_NAME" source="SOLUTION_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$SOLUTION_ID$ID" source="ID"/>
+    </input>
+    <joinAttribute name="JOIN$SOLUTION_ID$ID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_5">
+  <attributes>
+    <attribute id="RETAILER_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RETAILER_ID"/>
+      <keyMapping columnObjectName="Join_5" columnName="RETAILER_ID"/>
+    </attribute>
+    <attribute id="RECIEVED_DATE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RECIEVED_DATE"/>
+      <keyMapping columnObjectName="Join_5" columnName="RECIEVED_DATE"/>
+    </attribute>
+    <attribute id="SHOP_NAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SHOP_NAME"/>
+      <keyMapping columnObjectName="Join_5" columnName="SHOP_NAME"/>
+    </attribute>
+    <attribute id="SHOP_ADDRESS" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SHOP_ADDRESS"/>
+      <keyMapping columnObjectName="Join_5" columnName="SHOP_ADDRESS"/>
+    </attribute>
+    <attribute id="PHONE_NUMBER" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PHONE_NUMBER"/>
+      <keyMapping columnObjectName="Join_5" columnName="PHONE_NUMBER"/>
+    </attribute>
+    <attribute id="PRODUCT_NAME" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_NAME"/>
+      <keyMapping columnObjectName="Join_5" columnName="PRODUCT_NAME"/>
+    </attribute>
+    <attribute id="BRAND" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BRAND"/>
+      <keyMapping columnObjectName="Join_5" columnName="BRAND"/>
+    </attribute>
+    <attribute id="PROBLEM" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROBLEM"/>
+      <keyMapping columnObjectName="Join_5" columnName="PROBLEM"/>
+    </attribute>
+    <attribute id="SEND_DATE" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SEND_DATE"/>
+      <keyMapping columnObjectName="Join_5" columnName="SEND_DATE"/>
+    </attribute>
+    <attribute id="IMAGE" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IMAGE"/>
+      <keyMapping columnObjectName="Join_5" columnName="IMAGE"/>
+    </attribute>
+    <attribute id="RECIEVED_BY" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RECIEVED_BY"/>
+      <keyMapping columnObjectName="Join_5" columnName="RECIEVED_BY"/>
+    </attribute>
+    <attribute id="CHECKRD_BY" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHECKRD_BY"/>
+      <keyMapping columnObjectName="Join_5" columnName="CHECKRD_BY"/>
+    </attribute>
+    <attribute id="SEND_BY" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SEND_BY"/>
+      <keyMapping columnObjectName="Join_5" columnName="SEND_BY"/>
+    </attribute>
+    <attribute id="SOLUTION_NAME" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SOLUTION_NAME"/>
+      <keyMapping columnObjectName="Join_5" columnName="SOLUTION_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="PT_ID" order="15" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="100000">
+        <formula>CONCAT('PT', &quot;RETAILER_ID&quot;)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/></logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="534" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="91" y="836"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302" y="836"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="592" y="356"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="380" y="676"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="477" y="516"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="118" y="676"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="28" y="3"/>
+      <rectangleSize width="178"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="136"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="145" y="516"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="178"/>
+    </shape>
+    <shape modelObjectName="Projection_4" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="136"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="172" y="356"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="178"/>
+    </shape>
+    <shape modelObjectName="Projection_5" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="920" y="30"/>
+      <rectangleSize width="136"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="534" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="26" y="30"/>
+      <rectangleSize width="178"/>
+    </shape>
+    <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape></shapes>
+</layout>
+</Calculation:scenario>

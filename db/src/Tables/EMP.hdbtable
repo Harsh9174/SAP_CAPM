@@ -1,0 +1,3 @@
+COLUMN TABLE EMP(
+    EID int primary key,
+    ENAME NVARCHAR(100));
